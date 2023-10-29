@@ -12,8 +12,8 @@ subTitlePosi = 0.88  # [0; 1]
 outFile = "/DISQUE/politique/écologie/Climat/showyourstripes/FromRawData/Mystripes.gif"
 duration = 300 # ms
 
-# Lang = 'Fr' # 'Uk' or 'Fr'
-Lang = 'Uk' # 'Uk' or 'Fr'
+Lang = 'Fr' # 'Uk' or 'Fr'
+# Lang = 'Uk' # 'Uk' or 'Fr'
 
 #https://www.nagraj.net/notes/gifs-in-r/
 library(magick)
@@ -122,15 +122,15 @@ Plot = ggplot(Aplot[w,], aes(x = Year, y = Anomaly)) +
        ,plot.margin = margin(t = 10, r = 0, b = 8, l = 0, unit = "mm")
        ,plot.background = element_rect(fill = "black")
      ) +
-  scale_y_continuous( limits = c(min(Aplot$Anomaly)*2.5, max(Aplot$Anomaly)*1.15) , breaks = yaxis$main, labels = yaxis$label
+  scale_y_continuous( limits = c(min(Aplot$Anomaly)*2.5, max(Aplot$Anomaly)*1.3) , breaks = yaxis$main, labels = yaxis$label
                       ,sec.axis = dup_axis()) +
   scale_x_continuous( limits = c(PlotYears[1]-.5,PlotYears[2]+.5) , breaks = xaxis$main, labels = xaxis$label) + 
   geom_rect(xmin = min(B$Year)-1, xmax = max(B$Year)+1, ymin = LPI_final0, ymax = LPI_final1, color = 'white',fill="#373737")+ 
   geom_line(   aes(y = LPI_final., x = Year), color = 'white') +
   
 
-  annotate("text", x = PlotYears[1]-diff(range(A$Year))*.001, y = max(Aplot$Anomaly)*1.1*   TitlePosi, label = paste(c('Uk' = "Global temperature change", 'Fr' = "Évolution globale des températures")[Lang], paste(range(Aplot$Year),collapse = '-')), colour="white",size=5.4, hjust=0) + 
-  annotate("text", x = PlotYears[1]-diff(range(A$Year))*.001, y = max(Aplot$Anomaly)*1.1*subTitlePosi, label = paste(c('Uk' = "Relative to average of", 'Fr'="Par rapport à la moyenne de")[Lang],paste(RefYears,collapse = '-'), "[°C]"), colour="white", hjust=0,size=4.5) + 
+  annotate("text", x = PlotYears[1]-diff(range(A$Year))*.001, y = max(Aplot$Anomaly)*1.3*   TitlePosi, label = paste(c('Uk' = "Global temperature change", 'Fr' = "Évolution globale des températures")[Lang], paste(range(Aplot$Year),collapse = '-')), colour="white",size=5.4, hjust=0) + 
+  annotate("text", x = PlotYears[1]-diff(range(A$Year))*.001, y = max(Aplot$Anomaly)*1.3*subTitlePosi, label = paste(c('Uk' = "Relative to average of", 'Fr'="Par rapport à la moyenne de")[Lang],paste(RefYears,collapse = '-'), "[°C]"), colour="white", hjust=0,size=4.5) + 
   annotate("text", x = min(B$Year)+diff(range(A$Year))*0.075
            , y = LPI_final1*1.4 , label = c('Uk' = "Biodiversity", 'Fr'="Biodiversité")[Lang], colour="#00b012",size=4.75, hjust=0, vjust=1) + 
   annotate("text", x = min(B$Year) -diff(range(A$Year))*.025
@@ -150,8 +150,9 @@ Plot = ggplot(Aplot[w,], aes(x = Year, y = Anomaly)) +
     Plot = Plot +    annotation_raster(img, xmin = 1999, xmax = 2011, ymin = 1.17, ymax = 1.36) 
   }
   if(upToYear >= 2017 & upToYear%%2 == max(Aplot$Year)%%2){
-    img <- readPNG("/DISQUE/image/images pour diaporama/Smileys/skull-crossbones.png")
-    Plot = Plot +    annotation_raster(img, xmin = 2019, xmax = 2032, ymin = 1.435, ymax = 1.64) 
+    # img <- readPNG("/DISQUE/image/images pour diaporama/Smileys/skull-crossbones.png")
+    img <- readPNG("/DISQUE/image/images pour diaporama/Smileys/danger de mort.png")
+    Plot = Plot +    annotation_raster(img, xmin = 2008.5, xmax = 2038, ymin = 1.52, ymax = 1.925) 
   }
 
   # y = 2023
@@ -160,7 +161,7 @@ Plot = ggplot(Aplot[w,], aes(x = Year, y = Anomaly)) +
   ggsave(plot = Plot, 
          filename = fp,
          device = "png",width = 8.25,height = 6.5
-         ,dpi = 115)
+         ,dpi = 165)
   )
 
 }}
