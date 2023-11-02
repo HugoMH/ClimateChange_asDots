@@ -7,7 +7,7 @@ LPI_final0_relative_to_Min = 2.3 # [0; 1] LPI_final0_relative_to_Min > LPI_final
 LPI_final1_relative_to_Min = 0.2 # [0; 1] LPI_final0_relative_to_Min > LPI_final1_relative_to_Min
 
    TitlePosi = 1 # [0; 1] relative to max anomaly
-subTitlePosi = 0.88  # [0; 1] 
+subTitlePosi = 0.86  # [0; 1] 
 
 outFile = "/DISQUE/politique/écologie/Climat/showyourstripes/FromRawData/Mystripes.gif"
 duration = 300 # ms
@@ -105,65 +105,72 @@ for(upToYear in Aplot$Year[Aplot$Year > 1855]){
 # upToYear = 2023
     w = Aplot$Year <= upToYear
     
-Plot = ggplot(Aplot[w,], aes(x = Year, y = Anomaly)) + 
-  # geom_bar(aes(fill = color),stat = "identity") +
-  # scale_fill_manual(values = Colors$color, breaks = Colors$color) + 
-  geom_segment( x=Aplot$Year[w],xend=Aplot$Year[w], y=0, yend=Aplot$Anomaly[w] , color = 'grey20') +
-  geom_point( aes(color=color, fill=color), size=2) + 
-  scale_color_manual(values = Colors$color, breaks = Colors$color) + 
-  # theme(base_size = 25) +
- theme(panel.background = element_rect(fill = "black",linewidth = 0.25, linetype = 8)
-       ,panel.grid = element_line(color = "black")
-       ,axis.title = element_text(size = 18,colour = 'white')
-       ,axis.text = element_text(size = 16,colour = 'white')
-       ,axis.line = element_line(colour = 'white')
-       ,axis.ticks = element_line(colour = 'white')
-       ,legend.position="none"
-       ,plot.margin = margin(t = 10, r = 0, b = 8, l = 0, unit = "mm")
-       ,plot.background = element_rect(fill = "black")
-     ) +
-  scale_y_continuous( limits = c(min(Aplot$Anomaly)*2.5, max(Aplot$Anomaly)*1.3) , breaks = yaxis$main, labels = yaxis$label
-                      ,sec.axis = dup_axis()) +
-  scale_x_continuous( limits = c(PlotYears[1]-.5,PlotYears[2]+.5) , breaks = xaxis$main, labels = xaxis$label) + 
-  geom_rect(xmin = min(B$Year)-1, xmax = max(B$Year)+1, ymin = LPI_final0, ymax = LPI_final1, color = 'white',fill="#373737")+ 
-  geom_line(   aes(y = LPI_final., x = Year), color = 'white') +
+  Plot = ggplot(Aplot[w,], aes(x = Year, y = Anomaly)) + 
+    # geom_bar(aes(fill = color),stat = "identity") +
+    # scale_fill_manual(values = Colors$color, breaks = Colors$color) + 
+    geom_segment( x=Aplot$Year[w],xend=Aplot$Year[w], y=0, yend=Aplot$Anomaly[w] , color = 'grey20') +
+    geom_point( aes(color=color, fill=color), size=2) + 
+    scale_color_manual(values = Colors$color, breaks = Colors$color) + 
+    # theme(base_size = 25) +
+   theme(panel.background = element_rect(fill = "black",linewidth = 0.25, linetype = 8)
+         ,panel.grid = element_line(color = "black")
+         ,axis.title = element_text(size = 18,colour = 'white')
+         ,axis.text = element_text(size = 16,colour = 'white')
+         ,axis.line = element_line(colour = 'white')
+         ,axis.ticks = element_line(colour = 'white')
+         ,legend.position="none"
+         ,plot.margin = margin(t = 10, r = 0, b = 7, l = 0, unit = "mm")
+         ,plot.background = element_rect(fill = "black")
+       ) +
+    scale_y_continuous( limits = c(min(Aplot$Anomaly)*2.5, max(Aplot$Anomaly)*1.35) , breaks = yaxis$main, labels = yaxis$label
+                        ,sec.axis = dup_axis()) +
+    scale_x_continuous( limits = c(PlotYears[1]-1,PlotYears[2]+.5) , breaks = xaxis$main, labels = xaxis$label) + 
+    geom_rect(xmin = min(B$Year)-1, xmax = max(B$Year)+1, ymin = LPI_final0, ymax = LPI_final1, color = 'white',fill="#373737")+ 
+    geom_line(   aes(y = LPI_final., x = Year), color = 'white') +
+    
   
-
-  annotate("text", x = PlotYears[1]-diff(range(A$Year))*.001, y = max(Aplot$Anomaly)*1.3*   TitlePosi, label = paste(c('Uk' = "Global temperature change", 'Fr' = "Évolution globale des températures")[Lang], paste(range(Aplot$Year),collapse = '-')), colour="white",size=5.4, hjust=0) + 
-  annotate("text", x = PlotYears[1]-diff(range(A$Year))*.001, y = max(Aplot$Anomaly)*1.3*subTitlePosi, label = paste(c('Uk' = "Relative to average of", 'Fr'="Par rapport à la moyenne de")[Lang],paste(RefYears,collapse = '-'), "[°C]"), colour="white", hjust=0,size=4.5) + 
-  annotate("text", x = min(B$Year)+diff(range(A$Year))*0.075
-           , y = LPI_final1*1.4 , label = c('Uk' = "Biodiversity", 'Fr'="Biodiversité")[Lang], colour="#00b012",size=4.75, hjust=0, vjust=1) + 
-  annotate("text", x = min(B$Year) -diff(range(A$Year))*.025
-           , y = (LPI_final0+LPI_final1)*0.5, label = c('Uk'="Living\nPlanet\nIndex", 'Fr'="Indice\nPlanète\nVivante")[Lang], colour="white", hjust=1, vjust=0.5, size = 4) + 
-  annotate("text", x = min(B$Year)-diff(range(A$Year))*.01, y = LPI_final0, label = "0%", colour="white", hjust=1, vjust = 0.25) + 
-  annotate("text", x = min(B$Year)-diff(range(A$Year))*.01, y = LPI_final1, label = "100%", colour="white", hjust=1, vjust = 0.75) + 
-  annotate("text", x = min(B$Year), y = LPI_final0*1.085, label = "1970", colour="white", hjust=0.5, vjust=1) + 
-  annotate("text", x = max(B$Year), y = LPI_final0*1.085, label = "2018", colour="white", hjust=0.5, vjust=1) + 
-  annotate("text", x = (max(B$Year)+max(Aplot$Year))*0.5, y = min(c(max(Aplot$LPI_final.,na.rm = T), Aplot$LPI_final.[Aplot$Year<=upToYear]), na.rm = T), label = paste0(round(min(c(max(Aplot$LPI_final,na.rm = T),Aplot$LPI_final[Aplot$Year<=upToYear]), na.rm = T)*100),"%") , colour="white", hjust=0.1, vjust=0.5, size = 4) +
-  annotate("text", x = (min(Aplot$Year)*0.75+max(Aplot$Year)*0.25), y = 1,  label = upToYear , colour=Aplot$color[Aplot$Year==upToYear], size = 12) +
-  ylab("") + xlab(c('Uk' = "Year", 'Fr'="Année")[Lang])
+    annotate("text", x = PlotYears[1]-diff(range(A$Year))*.005, y = max(Aplot$Anomaly)*1.35*   TitlePosi, label = paste(c('Uk' = "Temperature change on Earth", 'Fr' = "Évolution mondiale des températures")[Lang], paste(range(Aplot$Year),collapse = '-')), colour="white",size=5.4, hjust=0) + 
+    annotate("text", x = PlotYears[1]-diff(range(A$Year))*.001, y = max(Aplot$Anomaly)*1.35*subTitlePosi, label = paste(c('Uk' = "Relative to average of", 'Fr'="Par rapport à la moyenne de")[Lang],paste(RefYears,collapse = '-'), "[°C]",
+                                                                                                                        c('Uk' = "\nAtmospheric temperatures\nat land and ocean surfaces",'Fr' = "\nIl s'agit des températures de l'atmosphère\nà la surface des terres et des océans")[Lang]
+                                                                                                                        ), colour="white", hjust=0,size=4) + 
+    annotate("text", x = min(B$Year)+diff(range(A$Year))*0.075
+             , y = LPI_final1*1.4 , label = c('Uk' = "Biodiversity", 'Fr'="Biodiversité")[Lang], colour="#00b012",size=4.75, hjust=0, vjust=1) + 
+    annotate("text", x = min(B$Year) -diff(range(A$Year))*.025
+             , y = (LPI_final0+LPI_final1)*0.5, label = c('Uk'="Living\nPlanet\nIndex", 'Fr'="Indice\nPlanète\nVivante")[Lang], colour="white", hjust=1, vjust=0.5, size = 4) + 
+    annotate("text", x = min(B$Year)-diff(range(A$Year))*.01, y = LPI_final0, label = "0%", colour="white", hjust=1, vjust = 0.25) + 
+    annotate("text", x = min(B$Year)-diff(range(A$Year))*.01, y = LPI_final1, label = "100%", colour="white", hjust=1, vjust = 0.75) + 
+    annotate("text", x = min(B$Year), y = LPI_final0*1.085, label = "1970", colour="white", hjust=0.5, vjust=1) + 
+    annotate("text", x = max(B$Year), y = LPI_final0*1.085, label = "2018", colour="white", hjust=0.5, vjust=1) + 
+    annotate("text", x = (max(B$Year)+max(Aplot$Year))*0.5, y = min(c(max(Aplot$LPI_final.,na.rm = T), Aplot$LPI_final.[Aplot$Year<=upToYear]), na.rm = T), label = paste0(round(min(c(max(Aplot$LPI_final,na.rm = T),Aplot$LPI_final[Aplot$Year<=upToYear]), na.rm = T)*100),"%") , colour="white", hjust=0.1, vjust=0.5, size = 4) +
+    annotate("text", x = (min(Aplot$Year)*0.75+max(Aplot$Year)*0.25), y = 1,  label = upToYear , colour=Aplot$color[Aplot$Year==upToYear], size = 12) +
+    ylab("") + xlab(c('Uk' = "Year", 'Fr'="Année")[Lang])
+    
   
-
-  # plot with picture as layer
-  if(upToYear >= 2005){
-    img <- readPNG("/DISQUE/image/images pour diaporama/Smileys/hot.png")
-    Plot = Plot +    annotation_raster(img, xmin = 1999, xmax = 2011, ymin = 1.17, ymax = 1.36) 
-  }
-  if(upToYear >= 2017 & upToYear%%2 == max(Aplot$Year)%%2){
-    # img <- readPNG("/DISQUE/image/images pour diaporama/Smileys/skull-crossbones.png")
-    img <- readPNG("/DISQUE/image/images pour diaporama/Smileys/danger de mort.png")
-    Plot = Plot +    annotation_raster(img, xmin = 2008.5, xmax = 2038, ymin = 1.52, ymax = 1.925) 
-  }
-
-  # y = 2023
-  fp <-  paste0("./temp_to_del_", upToYear, " (",Aplot$duration[Aplot$Year == upToYear], "ms).png")
-  suppressWarnings(
-  ggsave(plot = Plot, 
-         filename = fp,
-         device = "png",width = 8.25,height = 6.5
-         ,dpi = 165)
-  )
-
+    # plot with picture as layer
+    if(upToYear >= 2003){
+      img <- readPNG("/DISQUE/image/images pour diaporama/Smileys/hot.png")
+      Plot = Plot +    annotation_raster(img, xmin = 1999, xmax = 2011, ymin = 1.17, ymax = 1.36) 
+    }
+    if(upToYear >= 2013 & upToYear%%2 == max(Aplot$Year)%%2){
+      # img <- readPNG("/DISQUE/image/images pour diaporama/Smileys/skull-crossbones.png")
+      img <- readPNG("/DISQUE/image/images pour diaporama/Smileys/danger de mort.png")
+      Plot = Plot +    annotation_raster(img, xmin = 2008.5, xmax = 2038, ymin = 1.52, ymax = 1.925)
+      if(upToYear < max(Aplot$Year)){
+        Plot = Plot + geom_text(mapping = aes(x = (min(Aplot$Year)*0.01+max(Aplot$Year)*0.99), y = 1.475),  label = "DANGER" , colour="red")
+      }
+      # annotate("text", x = (min(Aplot$Year)*0.075+max(Aplot$Year)*0.925), y = 1.475,  label = "DANGER" , colour="red", size = 4, hjust=0) +
+      
+    }
+  
+    # y = 2023
+    fp <-  paste0("./temp_to_del_", upToYear, " (",Aplot$duration[Aplot$Year == upToYear], "ms).png")
+    suppressWarnings(
+    ggsave(plot = Plot, 
+           filename = fp,
+           device = "png",width = 8.25,height = 6.5
+           ,dpi = 100)
+    )
+  
 }}
   
 
@@ -175,6 +182,4 @@ Plot = ggplot(Aplot[w,], aes(x = Year, y = Anomaly)) +
 
 
 # file.remove(paste0("./temp_to_del_", Aplot$Year, " (",Aplot$duration, "ms).png"))
-
-
 
