@@ -1,4 +1,4 @@
-# Evolution of climate 
+# Evolution from climate 
 
 Inspired of https://showyourstripes.info/
 
