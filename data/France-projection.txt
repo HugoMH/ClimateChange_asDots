@@ -1,0 +1,408 @@
+% This data file provides a summary of historical and projected future changes in the annual average 
+% temperature for the country or region: 
+% 
+%    France
+% 
+% The historical data comes from Berkeley Earth's Land Temperature Dataset, http://www.berkeleyearth.org/
+% 
+% Future temperature projections are based on a range of scenarios used in the IPCC's Sixth Assessment Report.
+% 
+% The scenarios presented are:
+% 
+% * SSP1-2.6: which has significantly lower greenhouse gas emissions in the future and assumes net zero carbon 
+%   dioxide worldwide by ~2080. Under this scenario, overall average global warming is expected to reach 
+%   approximately 1.8°C by 2100.
+% 
+% * SSP2-4.5: an intermediate future emissions trajectory.  This assumes that modern emissions levels stay 
+%   approximately consistent through 2050, before gradually declining.  Under this scenario, net zero is not 
+%   reached by 2100, and global average warming is expected to have reached approximately 2.7°C by 2100 and 
+%   still be rising.  Among the available scenarios, this is the closest to the world’s current behavior on 
+%   emissions.
+% 
+% * SSP3-7.0: a high emissions, high warming scenario, that assumes the world not only fails to curtail 
+%   greenhouse gas emissions, but that emissions continue to rise. Under this scenario, carbon dioxide 
+%   emissions are assumed to double by 2100; average global temperatures would reach approximately 3.6°C 
+%   above pre-industrial baseline, more than doubling current levels of warming.
+% 
+% In general, land areas are expected to warm faster than ocean areas in response to global warming.  As a
+% result, the national average temperature time series presented here will nearly always show more warming
+% than the corresponding global average in the same scenario.
+% 
+% For each future projection, a national average time series was extracted from the mean model temperature
+% field and then a rescaling was performed to match model estimates of the past to observed historical data 
+% from the same region.  This rescaling is necessary due to the low resolution of the climate model data.  
+% In particular, apparent model outputs from territories with ocean coastlines tend too warm too slowly due 
+% to a mixing of land and ocean values at the low resolution of the models.  Rescaling corrects for that 
+% bias in the models, and ensures long-term model trends are consistent with the observational data during
+% the historical period.
+% 
+% Each model scenario comes with some uncertainty regarding to future warming response to a given emissions
+% trajectory; however, these uncertainties have been represented here.  Significantly though, the uncertainty
+% regarding the amount of warming that will occur in the future is dominated about uncertainty regarding the 
+% future of greenhouse gas emissions.  Human actions will determine how much greenhouse gas is emitted this
+% century and thus are the most significant factor in determining the future warming trajectory
+% 
+% All temperatures are expressed in degrees C relative to a late 19th century baseline.
+% 
+%% Country: France
+%% Short_Name: France
+%% ISO_Code: FRA
+
+% Year, Annual Average, Annual Average Uncertainty, 10-year Smooth, SSP1-2.6, SSP2-4.5, SSP3-7.0, Model Historical
+1744	-0.31	1.51	NaN	NaN	NaN	NaN	NaN
+1745	NaN	NaN	NaN	NaN	NaN	NaN	NaN
+1746	NaN	NaN	NaN	NaN	NaN	NaN	NaN
+1747	NaN	NaN	NaN	NaN	NaN	NaN	NaN
+1748	NaN	NaN	NaN	NaN	NaN	NaN	NaN
+1749	NaN	NaN	-0.16	NaN	NaN	NaN	NaN
+1750	-0.09	NaN	-0.13	NaN	NaN	NaN	NaN
+1751	-0.58	NaN	-0.12	NaN	NaN	NaN	NaN
+1752	NaN	NaN	-0.11	NaN	NaN	NaN	NaN
+1753	0.13	2.11	-0.11	NaN	NaN	NaN	NaN
+1754	-0.03	2.15	-0.10	NaN	NaN	NaN	NaN
+1755	-0.27	2.69	-0.10	NaN	NaN	NaN	NaN
+1756	0.03	1.29	-0.10	NaN	NaN	NaN	NaN
+1757	-0.13	2.89	-0.10	NaN	NaN	NaN	NaN
+1758	-0.62	1.90	-0.11	NaN	NaN	NaN	NaN
+1759	0.33	2.14	-0.13	NaN	NaN	NaN	NaN
+1760	-0.12	2.03	-0.15	NaN	NaN	NaN	NaN
+1761	-0.00	1.69	-0.18	NaN	NaN	NaN	NaN
+1762	-0.41	2.50	-0.20	NaN	NaN	NaN	NaN
+1763	-0.56	2.46	-0.23	NaN	NaN	NaN	NaN
+1764	-0.07	1.45	-0.26	NaN	NaN	NaN	NaN
+1765	-0.16	1.36	-0.28	NaN	NaN	NaN	NaN
+1766	-0.32	1.48	-0.29	NaN	NaN	NaN	NaN
+1767	-0.33	1.62	-0.29	NaN	NaN	NaN	NaN
+1768	-0.41	2.52	-0.27	NaN	NaN	NaN	NaN
+1769	-0.42	2.58	-0.24	NaN	NaN	NaN	NaN
+1770	-0.49	2.42	-0.20	NaN	NaN	NaN	NaN
+1771	-0.36	2.66	-0.14	NaN	NaN	NaN	NaN
+1772	0.70	2.36	-0.08	NaN	NaN	NaN	NaN
+1773	-0.13	1.91	-0.02	NaN	NaN	NaN	NaN
+1774	0.05	2.24	0.03	NaN	NaN	NaN	NaN
+1775	0.45	3.52	0.07	NaN	NaN	NaN	NaN
+1776	-0.22	1.22	0.11	NaN	NaN	NaN	NaN
+1777	-0.19	3.62	0.13	NaN	NaN	NaN	NaN
+1778	0.28	3.51	0.15	NaN	NaN	NaN	NaN
+1779	0.82	1.69	0.15	NaN	NaN	NaN	NaN
+1780	0.17	1.42	0.13	NaN	NaN	NaN	NaN
+1781	0.87	0.83	0.10	NaN	NaN	NaN	NaN
+1782	-0.78	3.52	0.05	NaN	NaN	NaN	NaN
+1783	0.48	0.72	-0.01	NaN	NaN	NaN	NaN
+1784	-0.79	1.02	-0.06	NaN	NaN	NaN	NaN
+1785	-0.63	0.87	-0.08	NaN	NaN	NaN	NaN
+1786	-0.44	0.99	-0.08	NaN	NaN	NaN	NaN
+1787	0.19	1.38	-0.05	NaN	NaN	NaN	NaN
+1788	0.27	1.38	-0.00	NaN	NaN	NaN	NaN
+1789	-0.38	0.89	0.07	NaN	NaN	NaN	NaN
+1790	0.40	1.31	0.14	NaN	NaN	NaN	NaN
+1791	0.47	1.23	0.21	NaN	NaN	NaN	NaN
+1792	0.35	0.91	0.26	NaN	NaN	NaN	NaN
+1793	0.40	1.82	0.31	NaN	NaN	NaN	NaN
+1794	0.92	2.18	0.33	NaN	NaN	NaN	NaN
+1795	0.24	0.80	0.34	NaN	NaN	NaN	NaN
+1796	0.13	1.20	0.33	NaN	NaN	NaN	NaN
+1797	0.46	1.31	0.31	NaN	NaN	NaN	NaN
+1798	0.58	0.78	0.29	NaN	NaN	NaN	NaN
+1799	-0.76	1.75	0.27	NaN	NaN	NaN	NaN
+1800	0.46	1.55	0.25	NaN	NaN	NaN	NaN
+1801	0.58	1.75	0.23	NaN	NaN	NaN	NaN
+1802	0.44	1.46	0.22	NaN	NaN	NaN	NaN
+1803	0.00	1.80	0.19	NaN	NaN	NaN	NaN
+1804	0.61	1.85	0.17	NaN	NaN	NaN	NaN
+1805	-0.78	1.52	0.13	NaN	NaN	NaN	NaN
+1806	0.86	1.28	0.09	NaN	NaN	NaN	NaN
+1807	0.23	1.11	0.04	NaN	NaN	NaN	NaN
+1808	-0.67	2.09	-0.01	NaN	NaN	NaN	NaN
+1809	-0.23	2.72	-0.07	NaN	NaN	NaN	NaN
+1810	-0.19	3.24	-0.12	NaN	NaN	NaN	NaN
+1811	0.94	1.44	-0.18	NaN	NaN	NaN	NaN
+1812	-0.80	1.96	-0.23	NaN	NaN	NaN	NaN
+1813	-0.44	1.87	-0.27	NaN	NaN	NaN	NaN
+1814	-0.97	0.99	-0.29	NaN	NaN	NaN	NaN
+1815	-0.19	1.22	-0.28	NaN	NaN	NaN	NaN
+1816	-1.26	1.07	-0.24	NaN	NaN	NaN	NaN
+1817	-0.07	1.88	-0.17	NaN	NaN	NaN	NaN
+1818	0.47	2.71	-0.09	NaN	NaN	NaN	NaN
+1819	0.48	1.40	0.01	NaN	NaN	NaN	NaN
+1820	-0.36	1.03	0.10	NaN	NaN	NaN	NaN
+1821	0.41	0.57	0.18	NaN	NaN	NaN	NaN
+1822	1.30	1.76	0.25	NaN	NaN	NaN	NaN
+1823	-0.23	1.50	0.29	NaN	NaN	NaN	NaN
+1824	0.34	0.80	0.31	NaN	NaN	NaN	NaN
+1825	0.72	0.76	0.31	NaN	NaN	NaN	NaN
+1826	0.46	0.45	0.30	NaN	NaN	NaN	NaN
+1827	0.06	0.75	0.28	NaN	NaN	NaN	NaN
+1828	0.96	1.05	0.25	NaN	NaN	NaN	NaN
+1829	-1.05	0.85	0.23	NaN	NaN	NaN	NaN
+1830	-0.21	1.12	0.21	NaN	NaN	NaN	NaN
+1831	0.67	1.42	0.20	NaN	NaN	NaN	NaN
+1832	0.14	0.98	0.20	NaN	NaN	NaN	NaN
+1833	0.24	0.78	0.18	NaN	NaN	NaN	NaN
+1834	1.28	0.45	0.16	NaN	NaN	NaN	NaN
+1835	-0.08	0.84	0.11	NaN	NaN	NaN	NaN
+1836	-0.01	0.76	0.06	NaN	NaN	NaN	NaN
+1837	-0.43	1.11	-0.00	NaN	NaN	NaN	NaN
+1838	-0.62	0.87	-0.05	NaN	NaN	NaN	NaN
+1839	0.14	1.01	-0.09	NaN	NaN	NaN	NaN
+1840	-0.39	0.58	-0.11	NaN	NaN	NaN	NaN
+1841	0.11	0.73	-0.11	NaN	NaN	NaN	NaN
+1842	-0.18	0.67	-0.09	NaN	NaN	NaN	NaN
+1843	0.01	0.53	-0.07	NaN	NaN	NaN	NaN
+1844	-0.30	0.73	-0.05	NaN	NaN	NaN	NaN
+1845	-0.52	0.66	-0.02	NaN	NaN	NaN	NaN
+1846	1.04	0.88	-0.01	NaN	NaN	NaN	NaN
+1847	-0.07	0.74	-0.00	NaN	NaN	NaN	NaN
+1848	0.05	0.50	-0.01	NaN	NaN	NaN	NaN
+1849	0.23	0.50	-0.03	NaN	NaN	NaN	NaN
+1850	-0.35	0.69	-0.07	NaN	NaN	NaN	0.43
+1851	-0.58	0.82	-0.10	NaN	NaN	NaN	0.40
+1852	0.64	0.66	-0.13	NaN	NaN	NaN	0.38
+1853	-0.81	0.44	-0.14	NaN	NaN	NaN	0.36
+1854	-0.08	0.35	-0.14	NaN	NaN	NaN	0.34
+1855	-0.86	0.58	-0.11	NaN	NaN	NaN	0.32
+1856	0.20	0.76	-0.07	NaN	NaN	NaN	0.30
+1857	0.43	0.90	-0.02	NaN	NaN	NaN	0.29
+1858	-0.12	0.99	0.03	NaN	NaN	NaN	0.27
+1859	0.79	0.88	0.08	NaN	NaN	NaN	0.26
+1860	-0.81	0.33	0.13	NaN	NaN	NaN	0.25
+1861	0.32	0.44	0.18	NaN	NaN	NaN	0.24
+1862	0.63	0.40	0.21	NaN	NaN	NaN	0.24
+1863	0.60	0.39	0.25	NaN	NaN	NaN	0.24
+1864	-0.50	0.59	0.27	NaN	NaN	NaN	0.24
+1865	0.55	0.53	0.29	NaN	NaN	NaN	0.25
+1866	0.64	0.58	0.30	NaN	NaN	NaN	0.26
+1867	0.13	0.49	0.29	NaN	NaN	NaN	0.28
+1868	0.95	0.44	0.28	NaN	NaN	NaN	0.29
+1869	0.21	0.41	0.25	NaN	NaN	NaN	0.30
+1870	-0.20	0.80	0.22	NaN	NaN	NaN	0.31
+1871	-0.60	0.73	0.19	NaN	NaN	NaN	0.31
+1872	0.70	0.72	0.16	NaN	NaN	NaN	0.31
+1873	0.25	0.61	0.14	NaN	NaN	NaN	0.30
+1874	0.10	0.61	0.12	NaN	NaN	NaN	0.30
+1875	-0.01	0.31	0.10	NaN	NaN	NaN	0.29
+1876	0.39	0.34	0.08	NaN	NaN	NaN	0.28
+1877	0.36	0.36	0.04	NaN	NaN	NaN	0.26
+1878	-0.02	0.38	0.01	NaN	NaN	NaN	0.25
+1879	-1.09	0.38	-0.02	NaN	NaN	NaN	0.22
+1880	0.29	0.46	-0.05	NaN	NaN	NaN	0.19
+1881	-0.02	0.47	-0.08	NaN	NaN	NaN	0.15
+1882	0.10	0.40	-0.12	NaN	NaN	NaN	0.11
+1883	-0.28	0.21	-0.16	NaN	NaN	NaN	0.07
+1884	0.30	0.23	-0.21	NaN	NaN	NaN	0.04
+1885	-0.26	0.21	-0.28	NaN	NaN	NaN	0.01
+1886	-0.07	0.24	-0.35	NaN	NaN	NaN	-0.01
+1887	-1.00	0.20	-0.41	NaN	NaN	NaN	-0.02
+1888	-0.95	0.21	-0.45	NaN	NaN	NaN	-0.03
+1889	-0.79	0.23	-0.46	NaN	NaN	NaN	-0.02
+1890	-0.76	0.13	-0.43	NaN	NaN	NaN	-0.01
+1891	-0.62	0.25	-0.37	NaN	NaN	NaN	0.01
+1892	-0.15	0.24	-0.29	NaN	NaN	NaN	0.04
+1893	0.59	0.21	-0.19	NaN	NaN	NaN	0.07
+1894	0.06	0.32	-0.09	NaN	NaN	NaN	0.11
+1895	-0.06	0.15	0.01	NaN	NaN	NaN	0.14
+1896	-0.46	0.20	0.09	NaN	NaN	NaN	0.16
+1897	0.48	0.10	0.16	NaN	NaN	NaN	0.17
+1898	0.66	0.26	0.20	NaN	NaN	NaN	0.16
+1899	0.85	0.27	0.21	NaN	NaN	NaN	0.14
+1900	0.54	0.16	0.21	NaN	NaN	NaN	0.12
+1901	-0.41	0.16	0.19	NaN	NaN	NaN	0.09
+1902	-0.24	0.20	0.15	NaN	NaN	NaN	0.07
+1903	0.02	0.13	0.11	NaN	NaN	NaN	0.05
+1904	0.52	0.20	0.08	NaN	NaN	NaN	0.05
+1905	-0.25	0.17	0.05	NaN	NaN	NaN	0.06
+1906	0.25	0.20	0.04	NaN	NaN	NaN	0.08
+1907	-0.01	0.12	0.03	NaN	NaN	NaN	0.09
+1908	-0.02	0.18	0.04	NaN	NaN	NaN	0.11
+1909	-0.56	0.21	0.06	NaN	NaN	NaN	0.11
+1910	-0.06	0.21	0.08	NaN	NaN	NaN	0.11
+1911	0.84	0.13	0.11	NaN	NaN	NaN	0.10
+1912	-0.02	0.21	0.13	NaN	NaN	NaN	0.09
+1913	0.50	0.22	0.14	NaN	NaN	NaN	0.08
+1914	0.19	0.19	0.14	NaN	NaN	NaN	0.09
+1915	-0.02	0.17	0.13	NaN	NaN	NaN	0.11
+1916	0.22	0.15	0.13	NaN	NaN	NaN	0.13
+1917	-0.67	0.10	0.13	NaN	NaN	NaN	0.16
+1918	0.28	0.17	0.15	NaN	NaN	NaN	0.19
+1919	-0.24	0.18	0.18	NaN	NaN	NaN	0.22
+1920	0.64	0.15	0.21	NaN	NaN	NaN	0.25
+1921	1.10	0.12	0.24	NaN	NaN	NaN	0.28
+1922	-0.18	0.17	0.26	NaN	NaN	NaN	0.31
+1923	0.37	0.17	0.28	NaN	NaN	NaN	0.33
+1924	0.11	0.19	0.29	NaN	NaN	NaN	0.34
+1925	-0.14	0.13	0.31	NaN	NaN	NaN	0.35
+1926	0.72	0.10	0.32	NaN	NaN	NaN	0.34
+1927	0.32	0.09	0.33	NaN	NaN	NaN	0.33
+1928	0.87	0.11	0.34	NaN	NaN	NaN	0.32
+1929	0.16	0.09	0.34	NaN	NaN	NaN	0.30
+1930	0.74	0.11	0.34	NaN	NaN	NaN	0.29
+1931	-0.14	0.09	0.35	NaN	NaN	NaN	0.28
+1932	0.08	0.15	0.35	NaN	NaN	NaN	0.28
+1933	0.19	0.15	0.36	NaN	NaN	NaN	0.28
+1934	0.73	0.12	0.36	NaN	NaN	NaN	0.29
+1935	0.27	0.07	0.36	NaN	NaN	NaN	0.31
+1936	0.38	0.08	0.35	NaN	NaN	NaN	0.32
+1937	0.86	0.14	0.33	NaN	NaN	NaN	0.33
+1938	0.44	0.15	0.31	NaN	NaN	NaN	0.35
+1939	0.18	0.10	0.29	NaN	NaN	NaN	0.36
+1940	-0.30	0.09	0.28	NaN	NaN	NaN	0.37
+1941	-0.43	0.06	0.30	NaN	NaN	NaN	0.38
+1942	0.05	0.11	0.35	NaN	NaN	NaN	0.39
+1943	1.20	0.13	0.42	NaN	NaN	NaN	0.40
+1944	0.25	0.21	0.51	NaN	NaN	NaN	0.41
+1945	1.11	0.07	0.60	NaN	NaN	NaN	0.42
+1946	0.31	0.05	0.68	NaN	NaN	NaN	0.42
+1947	1.29	0.07	0.73	NaN	NaN	NaN	0.42
+1948	0.92	0.08	0.76	NaN	NaN	NaN	0.41
+1949	1.39	0.07	0.76	NaN	NaN	NaN	0.41
+1950	0.84	0.11	0.72	NaN	NaN	NaN	0.39
+1951	0.43	0.05	0.66	NaN	NaN	NaN	0.38
+1952	0.52	0.09	0.59	NaN	NaN	NaN	0.36
+1953	0.57	0.10	0.52	NaN	NaN	NaN	0.35
+1954	0.00	0.07	0.47	NaN	NaN	NaN	0.33
+1955	0.52	0.09	0.44	NaN	NaN	NaN	0.31
+1956	-0.62	0.08	0.43	NaN	NaN	NaN	0.29
+1957	0.59	0.08	0.44	NaN	NaN	NaN	0.28
+1958	0.51	0.07	0.46	NaN	NaN	NaN	0.26
+1959	1.30	0.05	0.47	NaN	NaN	NaN	0.25
+1960	0.54	0.13	0.46	NaN	NaN	NaN	0.24
+1961	1.36	0.07	0.44	NaN	NaN	NaN	0.22
+1962	-0.23	0.09	0.41	NaN	NaN	NaN	0.20
+1963	-0.62	0.18	0.37	NaN	NaN	NaN	0.18
+1964	0.49	0.06	0.35	NaN	NaN	NaN	0.16
+1965	-0.02	0.08	0.34	NaN	NaN	NaN	0.14
+1966	0.78	0.09	0.34	NaN	NaN	NaN	0.12
+1967	0.63	0.08	0.34	NaN	NaN	NaN	0.11
+1968	0.32	0.07	0.35	NaN	NaN	NaN	0.11
+1969	0.26	0.04	0.35	NaN	NaN	NaN	0.12
+1970	0.37	0.04	0.35	NaN	NaN	NaN	0.13
+1971	0.34	0.06	0.36	NaN	NaN	NaN	0.15
+1972	0.02	0.07	0.36	NaN	NaN	NaN	0.18
+1973	0.28	0.04	0.37	NaN	NaN	NaN	0.20
+1974	0.55	0.09	0.38	NaN	NaN	NaN	0.22
+1975	0.46	0.06	0.38	NaN	NaN	NaN	0.23
+1976	0.78	0.07	0.39	NaN	NaN	NaN	0.25
+1977	0.53	0.07	0.39	NaN	NaN	NaN	0.27
+1978	0.06	0.06	0.39	NaN	NaN	NaN	0.29
+1979	0.21	0.10	0.40	NaN	NaN	NaN	0.30
+1980	-0.12	0.13	0.42	NaN	NaN	NaN	0.32
+1981	0.52	0.04	0.44	NaN	NaN	NaN	0.34
+1982	1.25	0.09	0.47	NaN	NaN	NaN	0.35
+1983	1.01	0.07	0.51	NaN	NaN	NaN	0.37
+1984	0.31	0.04	0.55	NaN	NaN	NaN	0.39
+1985	0.02	0.07	0.60	NaN	NaN	NaN	0.42
+1986	0.28	0.09	0.66	NaN	NaN	NaN	0.46
+1987	0.31	0.04	0.74	NaN	NaN	NaN	0.50
+1988	1.11	0.07	0.82	NaN	NaN	NaN	0.54
+1989	1.59	0.13	0.90	NaN	NaN	NaN	0.58
+1990	1.62	0.06	0.97	NaN	NaN	NaN	0.61
+1991	0.61	0.03	1.03	NaN	NaN	NaN	0.64
+1992	1.01	0.07	1.07	NaN	NaN	NaN	0.67
+1993	0.62	0.04	1.11	NaN	NaN	NaN	0.70
+1994	1.83	0.04	1.14	NaN	NaN	NaN	0.74
+1995	1.39	0.04	1.17	NaN	NaN	NaN	0.80
+1996	0.35	0.05	1.20	NaN	NaN	NaN	0.86
+1997	1.65	0.06	1.23	NaN	NaN	NaN	0.94
+1998	1.06	0.05	1.27	NaN	NaN	NaN	1.01
+1999	1.47	0.05	1.31	NaN	NaN	NaN	1.09
+2000	1.59	0.05	1.35	NaN	NaN	NaN	1.17
+2001	1.20	0.05	1.38	NaN	NaN	NaN	1.24
+2002	1.63	0.07	1.40	NaN	NaN	NaN	1.31
+2003	1.93	0.08	1.41	NaN	NaN	NaN	1.37
+2004	1.11	0.11	1.41	NaN	NaN	NaN	1.42
+2005	1.09	0.07	1.40	1.45	1.47	1.48	1.46
+2006	1.78	0.06	1.39	1.49	1.51	1.52	NaN
+2007	1.46	0.07	1.37	1.52	1.54	1.55	NaN
+2008	1.09	0.10	1.35	1.54	1.56	1.58	NaN
+2009	1.48	0.08	1.35	1.57	1.58	1.60	NaN
+2010	0.38	0.10	1.35	1.59	1.60	1.63	NaN
+2011	2.15	0.10	1.38	1.62	1.63	1.65	NaN
+2012	1.29	0.09	1.42	1.66	1.65	1.68	NaN
+2013	0.84	0.08	1.49	1.70	1.69	1.71	NaN
+2014	2.06	0.08	1.56	1.75	1.73	1.75	NaN
+2015	1.88	0.11	1.65	1.80	1.78	1.78	NaN
+2016	1.46	0.06	1.74	1.85	1.83	1.82	NaN
+2017	1.72	0.08	1.82	1.90	1.89	1.85	NaN
+2018	2.27	0.13	1.90	1.94	1.96	1.89	NaN
+2019	2.10	0.13	1.96	1.99	2.02	1.93	NaN
+2020	2.42	0.10	2.00	2.03	2.08	1.97	NaN
+2021	NaN	NaN	NaN	2.07	2.14	2.02	NaN
+2022	NaN	NaN	NaN	2.11	2.19	2.07	NaN
+2023	NaN	NaN	NaN	2.14	2.24	2.13	NaN
+2024	NaN	NaN	NaN	2.18	2.28	2.18	NaN
+2025	NaN	NaN	NaN	2.21	2.33	2.23	NaN
+2026	NaN	NaN	NaN	2.24	2.37	2.28	NaN
+2027	NaN	NaN	NaN	2.26	2.41	2.32	NaN
+2028	NaN	NaN	NaN	2.28	2.44	2.37	NaN
+2029	NaN	NaN	NaN	2.30	2.48	2.42	NaN
+2030	NaN	NaN	NaN	2.32	2.51	2.47	NaN
+2031	NaN	NaN	NaN	2.35	2.54	2.52	NaN
+2032	NaN	NaN	NaN	2.37	2.58	2.57	NaN
+2033	NaN	NaN	NaN	2.40	2.62	2.63	NaN
+2034	NaN	NaN	NaN	2.44	2.66	2.68	NaN
+2035	NaN	NaN	NaN	2.47	2.70	2.73	NaN
+2036	NaN	NaN	NaN	2.51	2.73	2.77	NaN
+2037	NaN	NaN	NaN	2.55	2.75	2.80	NaN
+2038	NaN	NaN	NaN	2.58	2.77	2.83	NaN
+2039	NaN	NaN	NaN	2.61	2.79	2.86	NaN
+2040	NaN	NaN	NaN	2.64	2.80	2.89	NaN
+2041	NaN	NaN	NaN	2.66	2.82	2.92	NaN
+2042	NaN	NaN	NaN	2.68	2.84	2.97	NaN
+2043	NaN	NaN	NaN	2.71	2.87	3.03	NaN
+2044	NaN	NaN	NaN	2.73	2.90	3.09	NaN
+2045	NaN	NaN	NaN	2.75	2.94	3.16	NaN
+2046	NaN	NaN	NaN	2.77	2.98	3.23	NaN
+2047	NaN	NaN	NaN	2.78	3.03	3.30	NaN
+2048	NaN	NaN	NaN	2.79	3.08	3.37	NaN
+2049	NaN	NaN	NaN	2.79	3.13	3.44	NaN
+2050	NaN	NaN	NaN	2.80	3.17	3.49	NaN
+2051	NaN	NaN	NaN	2.80	3.21	3.54	NaN
+2052	NaN	NaN	NaN	2.80	3.24	3.58	NaN
+2053	NaN	NaN	NaN	2.80	3.27	3.62	NaN
+2054	NaN	NaN	NaN	2.80	3.30	3.66	NaN
+2055	NaN	NaN	NaN	2.80	3.33	3.70	NaN
+2056	NaN	NaN	NaN	2.80	3.36	3.75	NaN
+2057	NaN	NaN	NaN	2.81	3.39	3.80	NaN
+2058	NaN	NaN	NaN	2.81	3.43	3.86	NaN
+2059	NaN	NaN	NaN	2.82	3.47	3.92	NaN
+2060	NaN	NaN	NaN	2.83	3.51	3.98	NaN
+2061	NaN	NaN	NaN	2.83	3.54	4.03	NaN
+2062	NaN	NaN	NaN	2.84	3.58	4.08	NaN
+2063	NaN	NaN	NaN	2.85	3.61	4.13	NaN
+2064	NaN	NaN	NaN	2.87	3.63	4.17	NaN
+2065	NaN	NaN	NaN	2.88	3.66	4.21	NaN
+2066	NaN	NaN	NaN	2.90	3.68	4.25	NaN
+2067	NaN	NaN	NaN	2.91	3.69	4.30	NaN
+2068	NaN	NaN	NaN	2.92	3.71	4.35	NaN
+2069	NaN	NaN	NaN	2.92	3.73	4.41	NaN
+2070	NaN	NaN	NaN	2.91	3.74	4.47	NaN
+2071	NaN	NaN	NaN	2.91	3.76	4.53	NaN
+2072	NaN	NaN	NaN	2.90	3.77	4.60	NaN
+2073	NaN	NaN	NaN	2.89	3.79	4.66	NaN
+2074	NaN	NaN	NaN	2.88	3.80	4.73	NaN
+2075	NaN	NaN	NaN	2.88	3.82	4.79	NaN
+2076	NaN	NaN	NaN	2.89	3.84	4.85	NaN
+2077	NaN	NaN	NaN	2.89	3.85	4.90	NaN
+2078	NaN	NaN	NaN	2.90	3.88	4.96	NaN
+2079	NaN	NaN	NaN	2.90	3.90	5.01	NaN
+2080	NaN	NaN	NaN	2.91	3.93	5.07	NaN
+2081	NaN	NaN	NaN	2.91	3.96	5.13	NaN
+2082	NaN	NaN	NaN	2.91	4.00	5.20	NaN
+2083	NaN	NaN	NaN	2.90	4.04	5.27	NaN
+2084	NaN	NaN	NaN	2.90	4.09	5.35	NaN
+2085	NaN	NaN	NaN	2.90	4.13	5.42	NaN
+2086	NaN	NaN	NaN	2.90	4.16	5.49	NaN
+2087	NaN	NaN	NaN	2.89	4.18	5.56	NaN
+2088	NaN	NaN	NaN	2.89	4.19	5.63	NaN
+2089	NaN	NaN	NaN	2.89	4.20	5.70	NaN
+2090	NaN	NaN	NaN	2.88	4.20	5.78	NaN
+2091	NaN	NaN	NaN	2.87	4.20	5.85	NaN
+2092	NaN	NaN	NaN	2.86	4.20	5.93	NaN
+2093	NaN	NaN	NaN	2.85	4.21	6.01	NaN
+2094	NaN	NaN	NaN	2.83	4.22	6.10	NaN
+2095	NaN	NaN	NaN	2.82	4.24	6.18	NaN
+2096	NaN	NaN	NaN	2.81	4.26	6.26	NaN
+2097	NaN	NaN	NaN	2.81	4.29	6.35	NaN
+2098	NaN	NaN	NaN	2.82	4.32	6.43	NaN
+2099	NaN	NaN	NaN	2.84	4.36	6.52	NaN
+2100	NaN	NaN	NaN	2.88	4.39	6.61	NaN
