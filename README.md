@@ -1,6 +1,6 @@
-# Evolution from climate 
+# Evolution of climate 
 
-Inspired of https://showyourstripes.info/
+Inspired from https://showyourstripes.info/
 
 ![](/fig/Mystripes_Fr.gif) <br>
 
