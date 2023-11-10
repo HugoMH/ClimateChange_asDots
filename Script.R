@@ -1,5 +1,7 @@
 # https://berkeleyearth.org/
 # RefYears = c(1951, 1980)
+setwd("/DISQUE/politique/écologie/Climat/showyourstripes/FromRawData/")
+
 RefYears = c(1850, 1900) # reference for the 1.5°C threshold
 PlotYears = c(1850, as.numeric(strsplit(date(),' ')[[1]][length(strsplit(date(),' ')[[1]])]))
 
@@ -9,14 +11,38 @@ LPI_final1_relative_to_Min = 0.2 # [0; 1] LPI_final0_relative_to_Min > LPI_final
    TitlePosi = 1 # [0; 1] relative to max anomaly
 subTitlePosi = 0.86  # [0; 1] 
 
-outFile = "/DISQUE/politique/écologie/Climat/showyourstripes/FromRawData/Mystripes.gif"
-duration = 300 # ms
+outFile = "./Mystripes.gif"
+duration = 750 # ms
+
+# FileFormat = 'png'
+FileFormat = 'pdf'
 
 Lang = 'Fr' # 'Uk' or 'Fr'
 # Lang = 'Uk' # 'Uk' or 'Fr'
 
+Rapports = list("Fr" = c(`Rapport Meadows (1972)` = 1972#, 'GIEC' = 1988
+                         , '1er rapport du GIEC (1990)' = 1990 )
+               ,"Uk" = c(`Meadows report (1972)`  = 1972#, 'IPCC' = 1988
+                         , '1st IPCC report (1990)' = 1990)
+               )
+
+Events = list("Fr" = c(
+  "Lampe électrique\n(1879)" = 1879
+  ,"Voitures grand\npublique (1908)" = 1908
+  ,"Chute du mur de Berlin (1989)" = 1989#, 'GIEC' = 1988
+                         , '11 Septembre (attentat ; 2001)' = 2001 )
+                ,"Uk" = c(
+                  "First electric lamp\n(1879)" = 1879
+  ,"Mass-market cars (1908)" = 1908
+  ,'Fall of the Berlin Wall (1989)'  = 1989#, 'IPCC' = 1988
+                          , '11 September attack (2001)' = 2001)
+)
+
+PlotYears_Biodiv = c(1970, 2018)
+BiodivColor = "#00b012" # on grey
+BiodivColor2 = "#17d92b" # on black
 #https://www.nagraj.net/notes/gifs-in-r/
-library(magick)
+# library(magick)
 library(ggplot2)
 library(circlize) # colorRamp2
 library(png)
@@ -24,10 +50,10 @@ library(png)
 
 # europe-TAVG-Trend.txt
 # Complete_TAVG_complete.txt
-# A = read.table("/media/hmh/DD/DISQUE/politique/écologie/Climat/showyourstripes/FromRawData/Complete_TAVG_complete.txt",comment.char = "%", na.strings = "NaN")
+# A = read.table("/media/hmh/DD/DISQUE/politique/écologie/Climat/showyourstripes/FromRawData/data/Complete_TAVG_complete.txt",comment.char = "%", na.strings = "NaN")
 # A = read.table("https://data.berkeleyearth.org/auto/Regional/TAVG/Text/europe-TAVG-Trend.txt",comment.char = "%", na.strings = "NaN")
 
-A = read.table("/media/hmh/DD/DISQUE/politique/écologie/Climat/showyourstripes/FromRawData/Land_and_Ocean_complete.txt",comment.char = "%", na.strings = "NaN")
+A = read.table("./data/Land_and_Ocean_complete.txt",comment.char = "%", na.strings = "NaN")
 # A = read.table("https://berkeley-earth-temperature.s3.us-west-1.amazonaws.com/Global/Land_and_Ocean_complete.txt",comment.char = "%", na.strings = "NaN")
 
 # A = read.table("https://berkeley-earth-temperature.s3.us-west-1.amazonaws.com/Global/Complete_TAVG_complete.txt",comment.char = "%", na.strings = "NaN")
@@ -36,7 +62,7 @@ A = A[,c(1,3)]
 # head(A)
 
 # B = read.table("https://www.livingplanetindex.org/session/22b0b29a3d227f9f8701f5be49c8f416/download/downloadData?w=",sep=",",h=T)[,1:4]
-B = read.table("/media/hmh/DD/DISQUE/politique/écologie/Climat/showyourstripes/FromRawData/Living Planet Index - Living Planet Report 2022.csv",sep=",",h=T)[,1:4]
+B = read.table("./data/Living Planet Index - Living Planet Report 2022.csv",sep=",",h=T)[,1:4]
 
 A = as.data.frame(t(sapply(split(A,A$Year),function(x)apply(x,2,mean,na.rm=T))))
 # head(A)
@@ -77,7 +103,7 @@ Aplot$duration = duration
 # Aplot$duration = round(Aplot$duration)
 # Aplot$duration = Aplot$duration * 10
 
-Aplot$duration[nrow(Aplot)] = (10 #s
+Aplot$duration[nrow(Aplot)] = (14 #s
                                )*1000
 sum(Aplot$duration)/1000 # s
 
@@ -89,10 +115,12 @@ yaxis$label[yaxis$label >0] = paste0('+', yaxis$label[yaxis$label>0])
 yaxis$label[yaxis$label==0] = paste0('  ', yaxis$label[yaxis$label==0])
 yaxis$label = paste0(yaxis$label,'°C')
 
+Ylim = c(min(Aplot$Anomaly)*2.5, max(Aplot$Anomaly)*1.35)
+
 xaxis = list(main = seq(1850, 2023, by = 50))
-xaxis$main = sort(c(xaxis$main, 1970,2018))
+xaxis$main = sort(c(xaxis$main, PlotYears_Biodiv[1], PlotYears_Biodiv[2]))
 xaxis$label = xaxis$main
-xaxis$label[is.element(xaxis$main,c(1970,2018))] = ''
+xaxis$label[is.element(xaxis$main, PlotYears_Biodiv )] = ''
 
 # yaxis$label[!(yaxis$label %% 2 == 0 | yaxis$label %% 2 == 1)] = ""
 # yaxis$label[yaxis$main==1] = "+1"
@@ -102,9 +130,14 @@ xaxis$label[is.element(xaxis$main,c(1970,2018))] = ''
 
 for(upToYear in Aplot$Year[Aplot$Year > 1855]){
   if((upToYear < 1940 & upToYear %% 5 == 0) | (upToYear >= 1940 & upToYear < 1968 & upToYear %% 2 == 0) | (upToYear >= 1968)  ){
-# upToYear = 2023
-    w = Aplot$Year <= upToYear
-    
+  # upToYear = 2023
+  w = Aplot$Year <= upToYear
+  
+  colorInnerTicks = rep('white', upToYear - PlotYears[1]+1)
+  names(colorInnerTicks) = PlotYears[1]:upToYear
+  if(upToYear >= PlotYears_Biodiv[1]){
+    colorInnerTicks[as.character(PlotYears_Biodiv[1]:min(c(PlotYears_Biodiv[2],upToYear)))] = "#48ff5b"
+  }
   Plot = ggplot(Aplot[w,], aes(x = Year, y = Anomaly)) + 
     # geom_bar(aes(fill = color),stat = "identity") +
     # scale_fill_manual(values = Colors$color, breaks = Colors$color) + 
@@ -122,64 +155,99 @@ for(upToYear in Aplot$Year[Aplot$Year > 1855]){
          ,plot.margin = margin(t = 10, r = 0, b = 7, l = 0, unit = "mm")
          ,plot.background = element_rect(fill = "black")
        ) +
-    scale_y_continuous( limits = c(min(Aplot$Anomaly)*2.5, max(Aplot$Anomaly)*1.35) , breaks = yaxis$main, labels = yaxis$label
+    scale_y_continuous( limits = Ylim , breaks = yaxis$main, labels = yaxis$label
                         ,sec.axis = dup_axis()) +
     scale_x_continuous( limits = c(PlotYears[1]-1,PlotYears[2]+.5) , breaks = xaxis$main, labels = xaxis$label) + 
+    
+    geom_segment( x=PlotYears[1]:upToYear, xend=PlotYears[1]:upToYear
+                  , y=Ylim[1]-diff(Ylim)*0.05, yend=Ylim[1]-diff(Ylim)*0.04 , color = colorInnerTicks, linewidth=0.25) +
     geom_rect(xmin = min(B$Year)-1, xmax = max(B$Year)+1, ymin = LPI_final0, ymax = LPI_final1, color = 'white',fill="#373737")+ 
     geom_line(   aes(y = LPI_final., x = Year), color = 'white') +
     
-  
     annotate("text", x = PlotYears[1]-diff(range(A$Year))*.005, y = max(Aplot$Anomaly)*1.35*   TitlePosi, label = paste(c('Uk' = "Temperature change on Earth", 'Fr' = "Évolution mondiale des températures")[Lang], paste(range(Aplot$Year),collapse = '-')), colour="white",size=5.4, hjust=0) + 
     annotate("text", x = PlotYears[1]-diff(range(A$Year))*.001, y = max(Aplot$Anomaly)*1.35*subTitlePosi, label = paste(c('Uk' = "Relative to average of", 'Fr'="Par rapport à la moyenne de")[Lang],paste(RefYears,collapse = '-'), "[°C]",
                                                                                                                         c('Uk' = "\nAtmospheric temperatures\nat land and ocean surfaces",'Fr' = "\nIl s'agit des températures de l'atmosphère\nà la surface des terres et des océans")[Lang]
                                                                                                                         ), colour="white", hjust=0,size=4) + 
     annotate("text", x = min(B$Year)+diff(range(A$Year))*0.075
-             , y = LPI_final1*1.4 , label = c('Uk' = "Biodiversity", 'Fr'="Biodiversité")[Lang], colour="#00b012",size=4.75, hjust=0, vjust=1) + 
+             , y = LPI_final1*1.4 , label = c('Uk' = "Biodiversity", 'Fr'="Biodiversité")[Lang], colour=BiodivColor,size=4.75, hjust=0, vjust=1) + 
     annotate("text", x = min(B$Year) -diff(range(A$Year))*.025
              , y = (LPI_final0+LPI_final1)*0.5, label = c('Uk'="Living\nPlanet\nIndex", 'Fr'="Indice\nPlanète\nVivante")[Lang], colour="white", hjust=1, vjust=0.5, size = 4) + 
     annotate("text", x = min(B$Year)-diff(range(A$Year))*.01, y = LPI_final0, label = "0%", colour="white", hjust=1, vjust = 0.25) + 
     annotate("text", x = min(B$Year)-diff(range(A$Year))*.01, y = LPI_final1, label = "100%", colour="white", hjust=1, vjust = 0.75) + 
-    annotate("text", x = min(B$Year), y = LPI_final0*1.085, label = "1970", colour="white", hjust=0.5, vjust=1) + 
-    annotate("text", x = max(B$Year), y = LPI_final0*1.085, label = "2018", colour="white", hjust=0.5, vjust=1) + 
+    annotate("text", x = min(B$Year), y = LPI_final0*1.085, label = PlotYears_Biodiv[1], colour=BiodivColor2, hjust=0.5, vjust=1) + 
+    annotate("text", x = max(B$Year), y = LPI_final0*1.085, label = PlotYears_Biodiv[2], colour=BiodivColor2, hjust=0.5, vjust=1) + 
     annotate("text", x = (max(B$Year)+max(Aplot$Year))*0.5, y = min(c(max(Aplot$LPI_final.,na.rm = T), Aplot$LPI_final.[Aplot$Year<=upToYear]), na.rm = T), label = paste0(round(min(c(max(Aplot$LPI_final,na.rm = T),Aplot$LPI_final[Aplot$Year<=upToYear]), na.rm = T)*100),"%") , colour="white", hjust=0.1, vjust=0.5, size = 4) +
-    annotate("text", x = (min(Aplot$Year)*0.75+max(Aplot$Year)*0.25), y = 1,  label = upToYear , colour=Aplot$color[Aplot$Year==upToYear], size = 12) +
+    annotate("text", x = (min(Aplot$Year)*0.9+max(Aplot$Year)*0.1), y = 1.2,  label = upToYear , colour=Aplot$color[Aplot$Year==upToYear], size = 12) +
     ylab("") + xlab(c('Uk' = "Year", 'Fr'="Année")[Lang])
     
+  # add reports
+  for(r in names(Rapports[Lang][[1]])){
+    year = Rapports[Lang][[1]][r]
+    if(year <= upToYear){
+      xtex = year-diff(PlotYears)*0.07
+      ytex = Aplot$Anomaly[Aplot$Year==year] + diff(Ylim) * 0.125
+      Plot = Plot + 
+        annotate("text", x = xtex, y = ytex, label = r, colour='white',hjust=1, vjust=0, size=3.5,fontface =2 ) + 
+        geom_segment( x=xtex+1, xend=year, y=ytex, yend=Aplot$Anomaly[Aplot$Year==year] , color = "white", linewidth=0.1)
+      }
+    }
+  
+  # add Events
+  for(r in names(Events[Lang][[1]])){
+    year = Events[Lang][[1]][r]
+    if(year <= upToYear){
+      Sign = sign(Aplot$Anomaly[Aplot$Year==year])
+      xtex = year-diff(PlotYears)*0.07
+      ytex = Aplot$Anomaly[Aplot$Year==year] + diff(Ylim) * 0.125 * Sign
+      if(r=="Lampe électrique\n(1879)" | r == "First electric lamp\n(1879)"){
+        xtex = xtex + 17
+        ytex = ytex + 0.15
+        Plot = Plot + 
+          annotate("text", x = xtex-10, y = ytex-0.05, label = r, colour='grey65',hjust=0.5, vjust=ifelse(Sign==1,0,1), size=2.75, fontface =2 ) + 
+          geom_segment( x=xtex, xend=year, y=ytex-0.025, yend=Aplot$Anomaly[Aplot$Year==year] , color = "grey50", linewidth=0.05)
+      }else{
+        Plot = Plot + 
+          annotate("text", x = xtex, y = ytex, label = r, colour='grey65',hjust=1, vjust=ifelse(Sign==1,0,1), size=2.75 , fontface =2) + 
+          geom_segment( x=xtex+1, xend=year, y=ytex, yend=Aplot$Anomaly[Aplot$Year==year] , color = "grey50", linewidth=0.05)
+      }
+    }
+  }
+  
   
     # plot with picture as layer
     if(upToYear >= 2003){
-      img <- readPNG("/DISQUE/image/images pour diaporama/Smileys/hot.png")
+      img <- readPNG("./fig/Smileys/hot.png")
       Plot = Plot +    annotation_raster(img, xmin = 1999, xmax = 2011, ymin = 1.17, ymax = 1.36) 
     }
     if(upToYear >= 2013 & upToYear%%2 == max(Aplot$Year)%%2){
       # img <- readPNG("/DISQUE/image/images pour diaporama/Smileys/skull-crossbones.png")
-      img <- readPNG("/DISQUE/image/images pour diaporama/Smileys/danger de mort.png")
+      img <- readPNG("./fig/Smileys/danger de mort.png")
       Plot = Plot +    annotation_raster(img, xmin = 2008.5, xmax = 2038, ymin = 1.52, ymax = 1.925)
       if(upToYear < max(Aplot$Year)){
         Plot = Plot + geom_text(mapping = aes(x = (min(Aplot$Year)*0.01+max(Aplot$Year)*0.99), y = 1.475),  label = "DANGER" , colour="red")
       }
       # annotate("text", x = (min(Aplot$Year)*0.075+max(Aplot$Year)*0.925), y = 1.475,  label = "DANGER" , colour="red", size = 4, hjust=0) +
-      
     }
   
-    # y = 2023
-    fp <-  paste0("./temp_to_del_", upToYear, " (",Aplot$duration[Aplot$Year == upToYear], "ms).png")
+    y = 2023
+    fp <-  paste0("./temp_to_del_", upToYear, " (",Aplot$duration[Aplot$Year == upToYear], "ms).",FileFormat)
     suppressWarnings(
-    ggsave(plot = Plot, 
+    ggsave(plot = Plot,
            filename = fp,
-           device = "png",width = 8.25,height = 6.5
-           ,dpi = 100)
+           # device = ""
+           device = FileFormat
+           ,width = 8.25,height = 6.5
+           ,dpi = 100
+           )
     )
-  
 }}
-  
-
-
-
+file.copy(fp, paste0("./temp_to_del_0", " (50ms).",FileFormat),overwrite = T)
 
 # => then "open as layers" in gimps and export to gif
 # Delay between frames
+# +
+# https://www.freeconvert.com/gif-compressor
 
-
-# file.remove(paste0("./temp_to_del_", Aplot$Year, " (",Aplot$duration, "ms).png"))
+# file.remove(paste0("./temp_to_del_", Aplot$Year, " (",Aplot$duration, "ms).",FileFormat))
+# file.remove(paste0("./temp_to_del_0", " (50ms).",FileFormat))
 
