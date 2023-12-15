@@ -2,8 +2,8 @@
 
 Inspired from https://showyourstripes.info/
 
-![](/fig/Mystripes_Fr.gif) <br>
+![](/fig/Mystripes_Fr.gi) <br>
 
-![](/fig/Mystripes_Uk.gif) <br>
+![](/fig/Mystripes_Uk.gi) <br>
 
 
