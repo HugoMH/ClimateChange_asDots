@@ -2,8 +2,7 @@
 
 Inspired from https://showyourstripes.info/
 
+![](/fig/Mystripes_Uk.gif) <br>
 ![](/fig/Mystripes_Fr.gif) <br>
 
-![](/fig/Mystripes_Uk.gif) <br>
-
-
+ 
