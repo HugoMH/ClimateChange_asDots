@@ -3,7 +3,7 @@
 Inspired from https://showyourstripes.info/
 
 The IPCC has been warning us for over thirty years, but we are not doing nothing. Given the long lifespan of greenhouse gases, the inertia of climate change is spread over several decades. As a result, we have only a handful of years left to react.
-The situation is dramatic. But **we are not doing "nothing"**./<br>
+The situation is dramatic. But **we are not doing "nothing"**.</br>
 ***What's worse***, every year we worsen our situation even faster than the previous year (see CO2 curve below).
 ![](/fig/compressed/Mystripes_Uk.gif) <be>
 
