@@ -12,13 +12,13 @@ LPI_final1_relative_to_Min = 0.2 # [0; 1] LPI_final0_relative_to_Min > LPI_final
    TitlePosi = 1 # [0; 1] relative to max anomaly
 subTitlePosi = 0.94  # [0; 1] 
 
-duration = 500 # ms
+duration = 300 # ms
 
 # not working # FileFormat = 'png'
 FileFormat = 'pdf'
 
-# Lang = 'Fr' # 'Uk' or 'Fr'
-Lang = 'Uk' # 'Uk' or 'Fr'
+Lang = 'Fr' # 'Uk' or 'Fr'
+# Lang = 'Uk' # 'Uk' or 'Fr'
 
 Rapports = list("Fr" = c(`Rapport Meadows (1972)` = 1972#, 'GIEC' = 1988
                          , '1er rapport du GIEC (1990)' = 1990 )
@@ -157,8 +157,9 @@ SizeCO2line =3
 Aplot[as.character(CO2$Year[is.element(CO2$Year, Aplot$Year)]), 'CO2']       = CO2[as.character(Aplot$Year[is.element(Aplot$Year , CO2$Year)]),'y']
 Aplot[as.character(CO2$Year[is.element(CO2$Year, Aplot$Year)]), 'CO2CumSum'] = CO2[as.character(Aplot$Year[is.element(Aplot$Year , CO2$Year)]),'yCumSum']
 
-for(upToYear in Aplot$Year[Aplot$Year > 1855]){
-  if((upToYear < 1940 & upToYear %% 5 == 0) | (upToYear >= 1940 & upToYear < 1968 & upToYear %% 2 == 0) | (upToYear >= 1968)  ){
+for(upToYear in Aplot$Year[Aplot$Year >= 1885]){
+  # if((upToYear < 1940 & upToYear %% 5 == 0) | (upToYear >= 1940 & upToYear < 1968 & upToYear %% 2 == 0) | (upToYear >= 1968)  ){
+  if(T){
     # upToYear = 1987
     # upToYear = 2023
     w = Aplot$Year <= upToYear
@@ -267,11 +268,11 @@ for(upToYear in Aplot$Year[Aplot$Year > 1855]){
         xtex = xtex + 17
         ytex = ytex + 0.15
         Plot = Plot + 
-          annotate("text", x = xtex-10, y = ytex-0.05, label = r, colour='grey65',hjust=0.5, vjust=ifelse(Sign==1,0,1), size=2.75, fontface =2 ) + 
+          annotate("text", x = xtex-10, y = ytex-0.05, label = r, colour='grey75',hjust=0.5, vjust=ifelse(Sign==1,0,1), size=3.25, fontface =2 ) + 
           geom_segment( x=xtex, xend=year, y=ytex-0.025, yend=Aplot$Anomaly[Aplot$Year==year] , color = "grey50", linewidth=0.05)
       }else{
         Plot = Plot + 
-          annotate("text", x = xtex, y = ytex, label = r, colour='grey65',hjust=1, vjust=ifelse(Sign==1,0,1), size=2.75 , fontface =2) + 
+          annotate("text", x = xtex, y = ytex, label = r, colour='grey75',hjust=1, vjust=ifelse(Sign==1,0,1), size=3.25 , fontface =2) + 
           geom_segment( x=xtex+1, xend=year, y=ytex, yend=Aplot$Anomaly[Aplot$Year==year] , color = "grey50", linewidth=0.05)
       }
     }
@@ -284,11 +285,11 @@ for(upToYear in Aplot$Year[Aplot$Year > 1855]){
       #          , label = expression(phantom()%->%phantom()) # latex2exp::TeX("\\symbol($\\rightarrow$)",bold=T)
       #          , colour="#bfc200",size=30, hjust=0)  + 
     # add pictures
-    if(upToYear >= 2003){
+    if(upToYear >= 2002){
       img <- readPNG("./fig/Smileys/hot.png")
       Plot = Plot +    annotation_raster(img, xmin = 1996, xmax = 2011, ymin = 1.15, ymax = 1.35) 
     }
-    if(upToYear >= 2013 & upToYear%%2 == max(Aplot$Year)%%2){
+    if(upToYear >= max(Aplot$Year)-13 & (upToYear%%3 == max(Aplot$Year)%%3 | upToYear%%3 == (max(Aplot$Year)+1)%%3)){
       # img <- readPNG("/DISQUE/image/images pour diaporama/Smileys/skull-crossbones.png")
       img <- readPNG("./fig/Smileys/danger de mort.png")
       
@@ -311,10 +312,10 @@ for(upToYear in Aplot$Year[Aplot$Year > 1855]){
              , colour="#bfc200",size=4.25, hjust=0,fontface = "bold")
   }else{
     Plot = Plot + 
-      annotate("text", x = PlotYears[2]-62+c('Fr'=0, 'Uk'=12)[Lang][[1]], y = Aplot$CO2CumSum[max(wi)]+0.13
-               , label = c('Fr'=latex2exp::TeX(r"(Le $CO_2$ restera pendant)",bold = T),'Uk'=latex2exp::TeX(r"($CO_2$ will stay for)",bold = T))[Lang]
+      annotate("text", x = PlotYears[2]-62+c('Fr'=0, 'Uk'=12)[Lang][[1]], y = Aplot$CO2CumSum[max(wi)]+0.13+c('Fr'=0, 'Uk'=0.02)[Lang][[1]]
+               , label = c('Fr'=latex2exp::TeX(r"(Le $CO_2$ restera pendant)",bold = T),'Uk'=latex2exp::TeX(r"($CO_2$ will remain for)",bold = T))[Lang]
                , colour=CO2ColorAxis, size=4.25, hjust=0) + 
-      annotate("text", x = PlotYears[2]-62+c('Fr'=0, 'Uk'=12)[Lang][[1]], y = Aplot$CO2CumSum[max(wi)]+0.06
+      annotate("text", x = PlotYears[2]-62+c('Fr'=0, 'Uk'=12)[Lang][[1]], y = Aplot$CO2CumSum[max(wi)]+0.06+c('Fr'=0, 'Uk'=0.02)[Lang][[1]]
                , label = c('Fr'="des centaines d'années",'Uk'="hundreds of years")[Lang]
                , colour=CO2ColorAxis, size=4.25, hjust=0,fontface = "bold")
   }
@@ -338,7 +339,7 @@ for(upToYear in Aplot$Year[Aplot$Year > 1855]){
            )
     )
 }}
-file.copy(fp, paste0("./temp_to_del_0", " (50ms).",FileFormat),overwrite = T)
+file.copy(fp, paste0("./temp_to_del_0", " (500ms).",FileFormat),overwrite = T)
 
 Sys.sleep(3)
 
@@ -349,7 +350,7 @@ PDFs = R.utils::listDirectory()
 PDFs = PDFs[regexpr('.pdf',PDFs)!=-1]
 PDFs = sapply(PDFs,function(x)strsplit(x,'.pdf',fixed = T)[[1]][1])
 sapply(PDFs,function(x)
-  system(paste0('pdftoppm -r 96 -singlefile -png "',x,'.pdf" "',x,'"'))
+  system(paste0('pdftoppm -r 72 -singlefile -png "',x,'.pdf" "',x,'"'))
   )
 
 # => then "open as layers" in gimps and export to gif
@@ -358,7 +359,7 @@ sapply(PDFs,function(x)
 # https://www.freeconvert.com/gif-compressor
 
 # file.remove(paste0("./temp_to_del_", Aplot$Year, " (",Aplot$duration, "ms).","pdf"))
-# file.remove(paste0("./temp_to_del_0", " (50ms).","pdf"))
+# file.remove(paste0("./temp_to_del_0", " (500ms).","pdf"))
 # file.remove(paste0("./temp_to_del_", Aplot$Year, " (",Aplot$duration, "ms).","png"))
-# file.remove(paste0("./temp_to_del_0", " (50ms).","png"))
+# file.remove(paste0("./temp_to_del_0", " (500ms).","png"))
 
