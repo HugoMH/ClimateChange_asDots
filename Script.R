@@ -14,11 +14,9 @@ subTitlePosi = 0.94  # [0; 1]
 
 duration = 300 # ms
 
-# not working # FileFormat = 'png'
-FileFormat = 'pdf'
-
 Lang = 'Fr' # 'Uk' or 'Fr'
 # Lang = 'Uk' # 'Uk' or 'Fr'
+
 
 Rapports = list("Fr" = c(`Rapport Meadows (1972)` = 1972#, 'GIEC' = 1988
                          , '1er rapport du GIEC (1990)' = 1990 )
@@ -38,10 +36,13 @@ Events = list("Fr" = c(
                           , '11 September attack (2001)' = 2001)
 )
 
-
 PlotYears_Biodiv = c(1970, 2018)
 BiodivColor = "#00b012" # on grey
 BiodivColor2 = "#17d92b" # on black
+
+# not working # FileFormat = 'png'
+FileFormat = 'pdf'
+
 #https://www.nagraj.net/notes/gifs-in-r/
 # library(magick)
 library(ggplot2)
@@ -140,7 +141,7 @@ CO2[,2] = CO2[,2]*3.664
 CO2$CumSum = cumsum(CO2[,2])
 # plot(CO2$Year, CO2$`fossil emissions excluding carbonation`)
 # plot(CO2$Year, CO2$CumSum)
-CO2scaling = median(Aplot$Anomaly[Aplot$Year>=1970 & Aplot$Year<=max(CO2$Year)]) / median(CO2$CumSum[CO2$Year>=1970])
+CO2scaling = median(Aplot$Anomaly[Aplot$Year>=1965 & Aplot$Year<=max(CO2$Year)]) / median(CO2$CumSum[CO2$Year>=1970])
 # CO2scaling = max(A$Anomaly) / max(CO2$CumSum)
 CO2$y       = CO2$`fossil emissions excluding carbonation` * CO2scaling
 CO2$yCumSum = CO2$CumSum                                   * CO2scaling
@@ -150,12 +151,14 @@ rownames(CO2) = CO2$Year
 
 CO2ColorAxis = '#909200'
 CO2ColorCum  = '#686900'
-CO2ColorYear = '#3c3c07'
+CO2ColorYear = '#211e00'
 
 SizeCO2line =3
 
 Aplot[as.character(CO2$Year[is.element(CO2$Year, Aplot$Year)]), 'CO2']       = CO2[as.character(Aplot$Year[is.element(Aplot$Year , CO2$Year)]),'y']
 Aplot[as.character(CO2$Year[is.element(CO2$Year, Aplot$Year)]), 'CO2CumSum'] = CO2[as.character(Aplot$Year[is.element(Aplot$Year , CO2$Year)]),'yCumSum']
+
+Aplot$zero = 0
 
 for(upToYear in Aplot$Year[Aplot$Year >= 1885]){
   # if((upToYear < 1940 & upToYear %% 5 == 0) | (upToYear >= 1940 & upToYear < 1968 & upToYear %% 2 == 0) | (upToYear >= 1968)  ){
@@ -173,16 +176,17 @@ for(upToYear in Aplot$Year[Aplot$Year >= 1885]){
   CO2barAddToX = 100
   
   Plot = ggplot(Aplot[w,], aes(x = Year, y = Anomaly)) + 
-    # Temperatures
-    geom_segment( x=Aplot$Year[w],xend=Aplot$Year[w], y=0, yend=Aplot$Anomaly[w] , color = 'grey20') +
     
     # CO2
-    geom_line( aes(y = CO2CumSum), size=SizeCO2line, color=CO2ColorYear, lineend='round') + 
+    geom_line( aes(y = CO2CumSum), linewidth=SizeCO2line, color=CO2ColorYear, lineend='round') + 
     geom_segment( x=Aplot$Year[max(wi)]+CO2barAddToX,xend=Aplot$Year[max(wi)]+CO2barAddToX, y=0, yend=Aplot$CO2CumSum[max(wi)]+SizeCO2line/2*(CO2scaling*12) , color = CO2ColorYear
                   , linewidth=CO2barAddToX*2+CO2barAddToX/4.5) + # upToYear = 1900
                   # , linewidth=CO2barAddToX*2+CO2barAddToX/4.5) +
+    annotate(geom = 'polygon', x = c(rev(Aplot$Year[w]),Aplot$Year[w]), y = c(Aplot$zero[w],Aplot$CO2CumSum[w]), size=SizeCO2line, fill=CO2ColorYear) +
     
     # Temperatures
+    # Temperatures
+    geom_segment( x=Aplot$Year[w],xend=Aplot$Year[w], y=0, yend=Aplot$Anomaly[w] , color = 'grey20') +
     geom_point( aes(color=color, fill=color), size=2) + 
     scale_color_manual(values = Colors$color, breaks = Colors$color) + 
     # theme(base_size = 25) +
@@ -215,8 +219,8 @@ for(upToYear in Aplot$Year[Aplot$Year >= 1885]){
     geom_rect(xmin = min(B$Year)-1, xmax = max(B$Year)+1, ymin = LPI_final0, ymax = LPI_final1, color = 'white',fill="#373737") + 
     geom_line(   aes(y = LPI_final., x = Year), color = 'white') +
     
-    annotate("text", x = PlotYears[1]-diff(range(A$Year))*.0057803, y = max(Aplot$Anomaly)*1.35*   TitlePosi, label = list('Uk' = latex2exp::TeX(paste("Temperature change on Earth"        ,paste(range(Aplot$Year),collapse = '-')),bold = T)
-                                                                                                                         , 'Fr' = latex2exp::TeX(paste("Évolution mondiale des températures",paste(range(Aplot$Year),collapse = '-')),bold = T))[Lang][[1]], colour="white",size=5.5, hjust=0) + 
+    annotate("text", x = PlotYears[1]-diff(range(A$Year))*.0057803, y = max(Aplot$Anomaly)*1.35*   TitlePosi, label = list('Uk' = latex2exp::TeX(paste("Temperature change on Earth"        ,paste(range(Aplot$Year),collapse = '-'), "(   )"),bold = T)
+                                                                                                                         , 'Fr' = latex2exp::TeX(paste("Évolution mondiale des températures",paste(range(Aplot$Year),collapse = '-'), "(   )"),bold = T))[Lang][[1]], colour="white",size=5.5, hjust=0) + 
     annotate("text", x = PlotYears[1]-diff(range(A$Year))*.0057803, y = max(Aplot$Anomaly)*1.35*subTitlePosi, label = paste(c('Uk' = "Relative to average of", 'Fr'="Par rapport à la moyenne de")[Lang],paste(RefYears,collapse = '-'), "[°C]")
     , colour="white", hjust=0,size=4.25) + 
     annotate("text", x = PlotYears[1]-diff(range(A$Year))*.0057803, y = max(Aplot$Anomaly)*1.35*subTitlePosi - max(Aplot$Anomaly)/25, label =  c('Uk' = "\n(Atmospheric temperatures close to land and ocean surfaces)",'Fr' = "\n(Températures de l'atmosphère près de la surface des terres et des océans)")[Lang]
@@ -245,6 +249,13 @@ for(upToYear in Aplot$Year[Aplot$Year >= 1885]){
     annotate("text", x = (min(Aplot$Year)*0.9+max(Aplot$Year)*0.1), y = 0.85,  label = upToYear , colour=Aplot$color[Aplot$Year==upToYear], size = 12) +
     ylab("") + xlab(c('Uk' = "Year", 'Fr'="Année")[Lang])
     
+  
+  # add colored dots in title
+  for(dot in 1:2){
+    Plot = Plot+
+      annotate("text", x = PlotYears[1]-diff(range(A$Year))*.0057803 + c('Uk'=126, 'Fr' = 150.5)[Lang]+dot*2.75, y = max(Aplot$Anomaly)*1.35*   TitlePosi-0.0125, label = latex2exp::TeX("\\bullet"), colour=c("#0005e2","#c30000")[dot],size=6.5, hjust=0)
+  }
+  
   # add reports
   for(r in names(Rapports[Lang][[1]])){
     year = Rapports[Lang][[1]][r]
@@ -350,16 +361,24 @@ PDFs = R.utils::listDirectory()
 PDFs = PDFs[regexpr('.pdf',PDFs)!=-1]
 PDFs = sapply(PDFs,function(x)strsplit(x,'.pdf',fixed = T)[[1]][1])
 sapply(PDFs,function(x)
-  system(paste0('pdftoppm -r 72 -singlefile -png "',x,'.pdf" "',x,'"'))
+  system(paste0('pdftoppm -r 96 -singlefile -png "',x,'.pdf" "',x,'"'))
   )
 
 # => then "open as layers" in gimps and export to gif
 # Delay between frames
 # +
 # https://www.freeconvert.com/gif-compressor
+# compression level = 100
+# 128 colors
+# Optimize Transparency ; Fuzz Factor = 5%
+
+# compression level = 150
+# 64 colors
+# Optimize Transparency ; Fuzz Factor = 10%
+
 
 # file.remove(paste0("./temp_to_del_", Aplot$Year, " (",Aplot$duration, "ms).","pdf"))
 # file.remove(paste0("./temp_to_del_0", " (500ms).","pdf"))
 # file.remove(paste0("./temp_to_del_", Aplot$Year, " (",Aplot$duration, "ms).","png"))
 # file.remove(paste0("./temp_to_del_0", " (500ms).","png"))
-
+# 
