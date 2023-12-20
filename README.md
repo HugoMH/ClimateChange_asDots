@@ -1,6 +1,6 @@
 # Evolution of climate and human-produced CO2
 
-Inspired from https://showyourstripes.info/
+Inspired from https://showyourstripes.info/. Feel free to modify it if you code in `R`, or ask for some modifications if they are important and useful (<a href="mailto:hmhPclimat@gmxPfr?subject=Dans l'adresse mail, remplacez les 2 'P' par '.'">hmh⋅climat\[A\]gmx⋅fr</a>).
 
 The IPCC has been warning us for over thirty years, but we are not doing nothing. Given the long lifespan of greenhouse gases, the inertia of climate change is spread over several decades. As a result, we have only a handful of years left to react.
 The situation is dramatic. But **we are not doing "nothing"**.</br>
